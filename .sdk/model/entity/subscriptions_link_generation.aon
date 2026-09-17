@@ -1,0 +1,112 @@
+# Entity: subscriptions_link_generation
+
+main: kit: entity: subscriptions_link_generation: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "language"
+      req: false
+      short: "The language in which the generated link should be presented, represented as a string."
+      type: "`$STRING`"
+    }
+    {
+      name: "managePreferencesUrl"
+      req: true
+      short: "The URL where the subscriber can manage their communication preferences."
+      type: "`$STRING`"
+    }
+    {
+      name: "subscriberIdString"
+      req: true
+      short: "A string representing the unique identifier of the subscriber."
+      type: "`$STRING`"
+    }
+    {
+      format: "int64"
+      name: "subscriptionId"
+      req: false
+      short: "The unique identifier for the subscription, represented as an integer in int64 format."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "unsubscribeAllUrl"
+      req: true
+      short: "A string containing the URL for unsubscribing the subscriber from all communications."
+      type: "`$STRING`"
+    }
+    {
+      name: "unsubscribeSingleUrl"
+      req: false
+      short: "A string containing the URL to unsubscribe the subscriber from a single communication."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "subscriptions_link_generation"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: null
+                kind: "query"
+                name: "business_unit_id"
+                orig: "business_unit_id"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: null
+                kind: "query"
+                name: "channel"
+                orig: "channel"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          contract: {
+            id: "POST /communication-preferences/2026-09/links/generate"
+            json: "{\"operationId\":\"post-/communication-preferences/2026-09/links/generate_/communication-preferences/v4/links/generate\",\"parameters\":[{\"description\":\"The communication channel for which the links are generated. Currently, only 'EMAIL' is supported.\",\"explode\":true,\"in\":\"query\",\"name\":\"channel\",\"required\":true,\"schema\":{\"enum\":[\"EMAIL\"],\"example\":null,\"type\":\"string\"},\"style\":\"form\"},{\"description\":\"The ID of the business unit for which the links are generated. It is an optional parameter and defaults to 0.\",\"explode\":true,\"in\":\"query\",\"name\":\"businessUnitId\",\"required\":false,\"schema\":{\"default\":0,\"example\":null,\"format\":\"int64\",\"type\":\"integer\"},\"style\":\"form\"}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"language\":{\"description\":\"The language in which the generated link should be presented, represented as a string.\",\"example\":null,\"type\":\"string\"},\"subscriberIdString\":{\"description\":\"A string representing the unique identifier of the subscriber. This property is required.\",\"example\":null,\"type\":\"string\"},\"subscriptionId\":{\"description\":\"The unique identifier for the subscription, represented as an integer in int64 format.\",\"example\":null,\"format\":\"int64\",\"type\":\"integer\"}},\"required\":[\"subscriberIdString\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"managePreferencesUrl\":{\"description\":\"The URL where the subscriber can manage their communication preferences.\",\"example\":null,\"type\":\"string\"},\"subscriberIdString\":{\"description\":\"A string representing the unique identifier of the subscriber.\",\"example\":null,\"type\":\"string\"},\"unsubscribeAllUrl\":{\"description\":\"A string containing the URL for unsubscribing the subscriber from all communications.\",\"example\":null,\"type\":\"string\"},\"unsubscribeSingleUrl\":{\"description\":\"A string containing the URL to unsubscribe the subscriber from a single communication.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"managePreferencesUrl\",\"subscriberIdString\",\"unsubscribeAllUrl\"],\"type\":\"object\"}}},\"description\":\"successful operation\"},\"default\":{\"content\":{\"*/*\":{\"example\":null,\"schema\":{\"description\":\"Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.\",\"example\":{\"category\":\"VALIDATION_ERROR\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"},\"message\":\"Invalid input (details will vary based on the error)\"},\"properties\":{\"category\":{\"description\":\"The error category\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"correlationId\":{\"description\":\"A unique identifier for the request. Include this value with any error reports or support tickets\",\"example\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"format\":\"uuid\",\"type\":\"string\"},\"errors\":{\"description\":\"further information about the error\",\"example\":null,\"items\":{\"description\":\"Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.\",\"example\":null,\"properties\":{\"code\":{\"description\":\"The status code associated with the error detail\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition\",\"example\":\"{missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"in\":{\"description\":\"The name of the field or parameter in which the error was found.\",\"example\":null,\"type\":\"string\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"example\":null,\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"example\":null,\"type\":\"string\"}},\"required\":[\"message\"],\"type\":\"object\"},\"type\":\"array\"},\"links\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"A map of link names to associated URIs containing documentation about the error or recommended remediation steps\",\"example\":null,\"type\":\"object\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate\",\"example\":\"An error occurred\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error\",\"example\":null,\"type\":\"string\"}},\"required\":[\"category\",\"correlationId\",\"message\"],\"type\":\"object\"}}},\"description\":\"\"}},\"security\":[{\"oauth2\":[\"communication_preferences.read_write\"]}],\"securitySchemes\":{\"developer_hapikey\":{\"in\":\"query\",\"name\":\"hapikey\",\"type\":\"apiKey\"},\"oauth2\":{\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://app.hubspot.com/oauth/authorize\",\"scopes\":{\"communication_preferences.read_write\":\"\",\"communication_preferences.statuses.batch.read\":\"\",\"communication_preferences.statuses.batch.write\":\"\"},\"tokenUrl\":\"https://api.hubapi.com/oauth/v1/token\"}},\"type\":\"oauth2\"},\"private_apps\":{\"in\":\"header\",\"name\":\"private-app\",\"type\":\"apiKey\"},\"private_apps_legacy\":{\"in\":\"header\",\"name\":\"private-app-legacy\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "POST"
+          orig: "/communication-preferences/2026-09/links/generate"
+          segments: [
+            {
+              lit: "communication-preferences"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "links"
+            }
+            {
+              lit: "generate"
+            }
+          ]
+          select: {
+            exist: [
+              "business_unit_id"
+              "channel"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

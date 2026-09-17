@@ -1,0 +1,44 @@
+# BasicSubscriptionsActionResponseWithResultsPublicStatusFlow
+
+main: kit: flow: BasicSubscriptionsActionResponseWithResultsPublicStatusFlow:
+{
+  entity: "subscriptions_action_response_with_results_public_status",
+  kind: "basic",
+  name: "BasicSubscriptionsActionResponseWithResultsPublicStatusFlow",
+  step: [
+    {
+      input: {
+        ref: "subscriptions_action_response_with_results_public_status_ref01"
+      }
+
+      match: {
+        subscriber_id_string: "subscriber_string01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "subscriptions_action_response_with_results_public_status_ref01",
+        srcdatavar: "subscriptions_action_response_with_results_public_status_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "subscriptions_action_response_with_results_public_status01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-subscriptions_action_response_with_results_public_status_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSubscriptionsActionResponseWithResultsPublicStatusFlow"
+}

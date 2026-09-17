@@ -1,0 +1,70 @@
+<?php
+declare(strict_types=1);
+
+// HubspotCommunicationPreferences SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+HubspotCommunicationPreferencesUtility::setRegistrar(function (HubspotCommunicationPreferencesUtility $u): void {
+    $u->clean = [HubspotCommunicationPreferencesClean::class, 'call'];
+    $u->done = [HubspotCommunicationPreferencesDone::class, 'call'];
+    $u->make_error = [HubspotCommunicationPreferencesMakeError::class, 'call'];
+    $u->feature_add = [HubspotCommunicationPreferencesFeatureAdd::class, 'call'];
+    $u->feature_hook = [HubspotCommunicationPreferencesFeatureHook::class, 'call'];
+    $u->feature_init = [HubspotCommunicationPreferencesFeatureInit::class, 'call'];
+    $u->fetcher = [HubspotCommunicationPreferencesFetcher::class, 'call'];
+    $u->make_fetch_def = [HubspotCommunicationPreferencesMakeFetchDef::class, 'call'];
+    $u->make_context = [HubspotCommunicationPreferencesMakeContext::class, 'call'];
+    $u->make_options = [HubspotCommunicationPreferencesMakeOptions::class, 'call'];
+    $u->make_request = [HubspotCommunicationPreferencesMakeRequest::class, 'call'];
+    $u->make_response = [HubspotCommunicationPreferencesMakeResponse::class, 'call'];
+    $u->make_result = [HubspotCommunicationPreferencesMakeResult::class, 'call'];
+    $u->make_point = [HubspotCommunicationPreferencesMakePoint::class, 'call'];
+    $u->make_spec = [HubspotCommunicationPreferencesMakeSpec::class, 'call'];
+    $u->make_url = [HubspotCommunicationPreferencesMakeUrl::class, 'call'];
+    $u->param = [HubspotCommunicationPreferencesParam::class, 'call'];
+    $u->prepare_auth = [HubspotCommunicationPreferencesPrepareAuth::class, 'call'];
+    $u->prepare_body = [HubspotCommunicationPreferencesPrepareBody::class, 'call'];
+    $u->prepare_headers = [HubspotCommunicationPreferencesPrepareHeaders::class, 'call'];
+    $u->prepare_method = [HubspotCommunicationPreferencesPrepareMethod::class, 'call'];
+    $u->prepare_params = [HubspotCommunicationPreferencesPrepareParams::class, 'call'];
+    $u->prepare_path = [HubspotCommunicationPreferencesPreparePath::class, 'call'];
+    $u->prepare_query = [HubspotCommunicationPreferencesPrepareQuery::class, 'call'];
+    $u->graphql_body = [HubspotCommunicationPreferencesGraphql::class, 'body'];
+    $u->graphql_errors = [HubspotCommunicationPreferencesGraphql::class, 'errors'];
+    $u->result_basic = [HubspotCommunicationPreferencesResultBasic::class, 'call'];
+    $u->result_body = [HubspotCommunicationPreferencesResultBody::class, 'call'];
+    $u->result_headers = [HubspotCommunicationPreferencesResultHeaders::class, 'call'];
+    $u->transform_request = [HubspotCommunicationPreferencesTransformRequest::class, 'call'];
+    $u->transform_response = [HubspotCommunicationPreferencesTransformResponse::class, 'call'];
+});

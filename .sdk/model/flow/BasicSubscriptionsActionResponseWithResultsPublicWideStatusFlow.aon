@@ -1,0 +1,26 @@
+# BasicSubscriptionsActionResponseWithResultsPublicWideStatusFlow
+
+main: kit: flow: BasicSubscriptionsActionResponseWithResultsPublicWideStatusFlow:
+{
+  entity: "subscriptions_action_response_with_results_public_wide_status",
+  kind: "basic",
+  name: "BasicSubscriptionsActionResponseWithResultsPublicWideStatusFlow",
+  step: [
+    {
+      match: {
+        subscriber_id_string: "subscriber_string01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "subscriptions_action_response_with_results_public_wide_status_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSubscriptionsActionResponseWithResultsPublicWideStatusFlow"
+}

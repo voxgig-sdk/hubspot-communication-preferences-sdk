@@ -1,0 +1,18 @@
+# BasicSubscriptionsLinkGenerationFlow
+
+main: kit: flow: BasicSubscriptionsLinkGenerationFlow:
+{
+  entity: "subscriptions_link_generation",
+  kind: "basic",
+  name: "BasicSubscriptionsLinkGenerationFlow",
+  step: [
+    {
+      input: {
+        ref: "subscriptions_link_generation_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSubscriptionsLinkGenerationFlow"
+}

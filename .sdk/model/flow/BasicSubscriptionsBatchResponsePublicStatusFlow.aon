@@ -1,0 +1,18 @@
+# BasicSubscriptionsBatchResponsePublicStatusFlow
+
+main: kit: flow: BasicSubscriptionsBatchResponsePublicStatusFlow:
+{
+  entity: "subscriptions_batch_response_public_status",
+  kind: "basic",
+  name: "BasicSubscriptionsBatchResponsePublicStatusFlow",
+  step: [
+    {
+      input: {
+        ref: "subscriptions_batch_response_public_status_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSubscriptionsBatchResponsePublicStatusFlow"
+}

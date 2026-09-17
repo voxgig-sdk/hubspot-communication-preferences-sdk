@@ -1,0 +1,18 @@
+# BasicSubscriptionsBatchResponsePublicBulkOptOutFromAllFlow
+
+main: kit: flow: BasicSubscriptionsBatchResponsePublicBulkOptOutFromAllFlow:
+{
+  entity: "subscriptions_batch_response_public_bulk_opt_out_from_all",
+  kind: "basic",
+  name: "BasicSubscriptionsBatchResponsePublicBulkOptOutFromAllFlow",
+  step: [
+    {
+      input: {
+        ref: "subscriptions_batch_response_public_bulk_opt_out_from_all_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSubscriptionsBatchResponsePublicBulkOptOutFromAllFlow"
+}

@@ -1,0 +1,10 @@
+# Flows
+
+@"./BasicSubscriptionsActionResponseWithResultsPublicStatusFlow.aon"
+@"./BasicSubscriptionsActionResponseWithResultsPublicWideStatusFlow.aon"
+@"./BasicSubscriptionsActionResponseWithResultsSubscriptionDefinitionFlow.aon"
+@"./BasicSubscriptionsBatchResponsePublicBulkOptOutFromAllFlow.aon"
+@"./BasicSubscriptionsBatchResponsePublicStatusBulkFlow.aon"
+@"./BasicSubscriptionsBatchResponsePublicStatusFlow.aon"
+@"./BasicSubscriptionsBatchResponsePublicWideStatusBulkFlow.aon"
+@"./BasicSubscriptionsLinkGenerationFlow.aon"

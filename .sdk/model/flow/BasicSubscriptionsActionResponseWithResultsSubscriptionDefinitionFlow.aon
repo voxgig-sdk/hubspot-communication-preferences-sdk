@@ -1,0 +1,22 @@
+# BasicSubscriptionsActionResponseWithResultsSubscriptionDefinitionFlow
+
+main: kit: flow: BasicSubscriptionsActionResponseWithResultsSubscriptionDefinitionFlow:
+{
+  entity: "subscriptions_action_response_with_results_subscription_definition",
+  kind: "basic",
+  name: "BasicSubscriptionsActionResponseWithResultsSubscriptionDefinitionFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "subscriptions_action_response_with_results_subscription_definition_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSubscriptionsActionResponseWithResultsSubscriptionDefinitionFlow"
+}

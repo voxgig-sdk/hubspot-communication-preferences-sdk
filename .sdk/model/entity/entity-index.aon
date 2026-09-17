@@ -1,0 +1,10 @@
+# Entity Models
+
+@"./subscriptions_action_response_with_results_public_status.aon"
+@"./subscriptions_action_response_with_results_public_wide_status.aon"
+@"./subscriptions_action_response_with_results_subscription_definition.aon"
+@"./subscriptions_batch_response_public_bulk_opt_out_from_all.aon"
+@"./subscriptions_batch_response_public_status.aon"
+@"./subscriptions_batch_response_public_status_bulk.aon"
+@"./subscriptions_batch_response_public_wide_status_bulk.aon"
+@"./subscriptions_link_generation.aon"

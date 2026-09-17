@@ -1,0 +1,63 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 8
+  metrics: count: path: 8
+  metrics: count: method: 10
+
+  entity: subscriptions_action_response_with_results_public_status: {
+    path: "/communication-preferences/2026-09/statuses/{subscriberIdString}": {
+      rename: param: "subscriberIdString": *"id"
+      op: create: method: *POST
+      op: load: method: *GET
+    }
+    path: "/communication-preferences/2026-09/statuses/{subscriberIdString}/unsubscribe-all": {
+      rename: param: "subscriberIdString": *"subscriber_id_string"
+      op: create: method: *POST
+    }
+  }
+
+  entity: subscriptions_action_response_with_results_public_wide_status: {
+    path: "/communication-preferences/2026-09/statuses/{subscriberIdString}/unsubscribe-all": {
+      rename: param: "subscriberIdString": *"subscriber_id_string"
+      op: list: method: *GET
+    }
+  }
+
+  entity: subscriptions_action_response_with_results_subscription_definition: {
+    path: "/communication-preferences/2026-09/definitions": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: subscriptions_batch_response_public_bulk_opt_out_from_all: {
+    path: "/communication-preferences/2026-09/statuses/batch/unsubscribe-all": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: subscriptions_batch_response_public_status: {
+    path: "/communication-preferences/2026-09/statuses/batch/write": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: subscriptions_batch_response_public_status_bulk: {
+    path: "/communication-preferences/2026-09/statuses/batch/read": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: subscriptions_batch_response_public_wide_status_bulk: {
+    path: "/communication-preferences/2026-09/statuses/batch/unsubscribe-all/read": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: subscriptions_link_generation: {
+    path: "/communication-preferences/2026-09/links/generate": {
+      op: create: method: *POST
+    }
+  }
+
+}

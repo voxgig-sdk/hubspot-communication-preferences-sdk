@@ -1,0 +1,18 @@
+# BasicSubscriptionsBatchResponsePublicWideStatusBulkFlow
+
+main: kit: flow: BasicSubscriptionsBatchResponsePublicWideStatusBulkFlow:
+{
+  entity: "subscriptions_batch_response_public_wide_status_bulk",
+  kind: "basic",
+  name: "BasicSubscriptionsBatchResponsePublicWideStatusBulkFlow",
+  step: [
+    {
+      input: {
+        ref: "subscriptions_batch_response_public_wide_status_bulk_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSubscriptionsBatchResponsePublicWideStatusBulkFlow"
+}

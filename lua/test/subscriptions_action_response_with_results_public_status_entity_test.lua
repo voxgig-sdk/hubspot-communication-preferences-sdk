@@ -1,0 +1,134 @@
+-- SubscriptionsActionResponseWithResultsPublicStatus entity test
+
+local json = require("dkjson")
+local vs = require("utility.struct.struct")
+local sdk = require("hubspot-communication-preferences_sdk")
+local helpers = require("core.helpers")
+local runner = require("test.runner")
+
+local _test_dir = debug.getinfo(1, "S").source:match("^@(.+/)")  or "./"
+
+describe("SubscriptionsActionResponseWithResultsPublicStatusEntity", function()
+  it("should create instance", function()
+    local testsdk = sdk.test(nil, nil)
+    local ent = testsdk:SubscriptionsActionResponseWithResultsPublicStatus(nil)
+    assert.is_not_nil(ent)
+  end)
+
+  it("should run basic flow", function()
+    local setup = subscriptions_action_response_with_results_public_status_basic_setup(nil)
+    -- Per-op sdk-test-control.json skip.
+    local _live = setup.live or false
+    for _, _op in ipairs({"create", "load"}) do
+      local _should_skip, _reason = runner.is_control_skipped("entityOp", "subscriptions_action_response_with_results_public_status." .. _op, _live and "live" or "unit")
+      if _should_skip then
+        pending(_reason or "skipped via sdk-test-control.json")
+        return
+      end
+    end
+    -- The basic flow consumes synthetic IDs from the fixture. In live mode
+    -- without an *_ENTID env override, those IDs hit the live API and 4xx.
+    if setup.synthetic_only then
+      pending("live entity test uses synthetic IDs from fixture — set HUBSPOT_COMMUNICATION_PREFERENCES_TEST_SUBSCRIPTIONS_ACTION_RESPONSE_WITH_RESULTS_PUBLIC_STATUS_ENTID JSON to run live")
+      return
+    end
+    local client = setup.client
+
+    -- CREATE
+    local subscriptions_action_response_with_results_public_status_ref01_ent = client:SubscriptionsActionResponseWithResultsPublicStatus(nil)
+    local subscriptions_action_response_with_results_public_status_ref01_data = helpers.to_map(vs.getprop(
+      vs.getpath(setup.data, "new.subscriptions_action_response_with_results_public_status"), "subscriptions_action_response_with_results_public_status_ref01"))
+    subscriptions_action_response_with_results_public_status_ref01_data["subscriber_id_string"] = setup.idmap["subscriber_string01"]
+
+    local subscriptions_action_response_with_results_public_status_ref01_data_result, err = subscriptions_action_response_with_results_public_status_ref01_ent:create(subscriptions_action_response_with_results_public_status_ref01_data, nil)
+    assert.is_nil(err)
+    subscriptions_action_response_with_results_public_status_ref01_data = helpers.to_map(type(subscriptions_action_response_with_results_public_status_ref01_data_result) == 'table' and subscriptions_action_response_with_results_public_status_ref01_data_result.data_get and subscriptions_action_response_with_results_public_status_ref01_data_result:data_get() or subscriptions_action_response_with_results_public_status_ref01_data_result)
+    assert.is_not_nil(subscriptions_action_response_with_results_public_status_ref01_data)
+    assert.is_not_nil(subscriptions_action_response_with_results_public_status_ref01_data["id"])
+
+    -- LOAD
+    local subscriptions_action_response_with_results_public_status_ref01_match_dt0 = {
+      id = subscriptions_action_response_with_results_public_status_ref01_data["id"],
+    }
+    local subscriptions_action_response_with_results_public_status_ref01_data_dt0_loaded, err = subscriptions_action_response_with_results_public_status_ref01_ent:load(subscriptions_action_response_with_results_public_status_ref01_match_dt0, nil)
+    assert.is_nil(err)
+    local subscriptions_action_response_with_results_public_status_ref01_data_dt0_load_result = helpers.to_map(type(subscriptions_action_response_with_results_public_status_ref01_data_dt0_loaded) == 'table' and subscriptions_action_response_with_results_public_status_ref01_data_dt0_loaded.data_get and subscriptions_action_response_with_results_public_status_ref01_data_dt0_loaded:data_get() or subscriptions_action_response_with_results_public_status_ref01_data_dt0_loaded)
+    assert.is_not_nil(subscriptions_action_response_with_results_public_status_ref01_data_dt0_load_result)
+    assert.are.equal(subscriptions_action_response_with_results_public_status_ref01_data_dt0_load_result["id"], subscriptions_action_response_with_results_public_status_ref01_data["id"])
+
+  end)
+end)
+
+function subscriptions_action_response_with_results_public_status_basic_setup(extra)
+  runner.load_env_local()
+
+  local entity_data_file = _test_dir .. "../../.sdk/test/entity/subscriptions_action_response_with_results_public_status/SubscriptionsActionResponseWithResultsPublicStatusTestData.json"
+  local f = io.open(entity_data_file, "r")
+  if f == nil then
+    error("failed to read subscriptions_action_response_with_results_public_status test data: " .. entity_data_file)
+  end
+  local entity_data_source = f:read("*a")
+  f:close()
+
+  local entity_data = json.decode(entity_data_source)
+
+  local options = {}
+  options["entity"] = entity_data["existing"]
+
+  local client = sdk.test(options, extra)
+
+  -- Generate idmap via transform.
+  local idmap = vs.transform(
+    { "subscriptions_action_response_with_results_public_status01", "subscriptions_action_response_with_results_public_status02", "subscriptions_action_response_with_results_public_status03", "status01", "status02", "status03", "subscriber_string01" },
+    {
+      ["`$PACK`"] = { "", {
+        ["`$KEY`"] = "`$COPY`",
+        ["`$VAL`"] = { "`$FORMAT`", "upper", "`$COPY`" },
+      }},
+    }
+  )
+
+  -- Detect ENTID env override before envOverride consumes it. When live
+  -- mode is on without a real override, the basic test runs against synthetic
+  -- IDs from the fixture and 4xx's. Surface this so the test can skip.
+  local entid_env_raw = os.getenv("HUBSPOT_COMMUNICATION_PREFERENCES_TEST_SUBSCRIPTIONS_ACTION_RESPONSE_WITH_RESULTS_PUBLIC_STATUS_ENTID")
+  local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
+
+  local env = runner.env_override({
+    ["HUBSPOT_COMMUNICATION_PREFERENCES_TEST_SUBSCRIPTIONS_ACTION_RESPONSE_WITH_RESULTS_PUBLIC_STATUS_ENTID"] = idmap,
+    ["HUBSPOT_COMMUNICATION_PREFERENCES_TEST_LIVE"] = "FALSE",
+    ["HUBSPOT_COMMUNICATION_PREFERENCES_TEST_EXPLAIN"] = "FALSE",
+    ["HUBSPOT_COMMUNICATION_PREFERENCES_APIKEY"] = "",
+  })
+
+  local idmap_resolved = helpers.to_map(
+    env["HUBSPOT_COMMUNICATION_PREFERENCES_TEST_SUBSCRIPTIONS_ACTION_RESPONSE_WITH_RESULTS_PUBLIC_STATUS_ENTID"])
+  if idmap_resolved == nil then
+    idmap_resolved = helpers.to_map(idmap)
+  end
+
+  if env["HUBSPOT_COMMUNICATION_PREFERENCES_TEST_LIVE"] == "TRUE" then
+    local merged_opts = vs.merge({
+      -- FIRST, so the generated fields below win: sdk-test-control.json's
+      -- test.client.options adds to the live client, it does not redirect it.
+      runner.live_client_options(),
+      {
+        apikey = env["HUBSPOT_COMMUNICATION_PREFERENCES_APIKEY"],
+      },
+      extra or {},
+    })
+    client = sdk.new(helpers.to_map(merged_opts))
+  end
+
+  local live = env["HUBSPOT_COMMUNICATION_PREFERENCES_TEST_LIVE"] == "TRUE"
+  return {
+    client = client,
+    data = entity_data,
+    idmap = idmap_resolved,
+    env = env,
+    explain = env["HUBSPOT_COMMUNICATION_PREFERENCES_TEST_EXPLAIN"] == "TRUE",
+    live = live,
+    synthetic_only = live and not idmap_overridden,
+    now = os.time() * 1000,
+  }
+end
